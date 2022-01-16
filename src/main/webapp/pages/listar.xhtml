@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+			<ul class="nav nav-tabs ">
+				<li role="presentation" ><a class="text-muted"
+					href="registrar.xhtml">Cadastro Nota</a></li>
+				<li role="presentation" class="active"><a class="text-muted"
+					href="listar.xhtml">Listar Notas</a></li>
+			</ul>
+			<br />
+			<br />
+			<h:form>
+				<h:dataTable styleClass="table table-striped" var="prova"
+					value="#{provaMB.provas}">
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+                        #{prova.nome}
+                    </h:column>                    
+					<h:column>
+						<f:facet name="header">Nota</f:facet>
+						#{prova.nota}				
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Acao</f:facet>
+						<div class="btn-group" role="group" aria-label="...">
+							<h:commandButton value="Remover" class="btn btn-default"
+								action="#{provaMB.removerProva}">
+								<f:setPropertyActionListener
+									target="#{provaMB.prova}" value="#{prova}" />
+							</h:commandButton>
+							<h:commandButton value="Editar" class="btn btn-default"
+								action="#{provaMB.editar}">
+								<f:setPropertyActionListener
+									target="#{provaMB.prova}" value="#{prova}" />
+							</h:commandButton>
+						</div>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

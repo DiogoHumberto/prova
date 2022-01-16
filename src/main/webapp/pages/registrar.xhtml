@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<ui:composition template="/pages/layout.xhtml">
+		<ui:define name="content">
+			<ul class="nav nav-tabs ">
+				<li role="presentation" class="active"><a class="text-muted"
+					href="registrar.xhtml">Cadastro Nota</a></li>
+				<li role="presentation"><a class="text-muted"
+					href="listar.xhtml">Listar Notas</a></li>
+			</ul>
+			<br />
+			<br />
+			<h:form styleClass="form-horizontal" id="pForm">
+				<div class="form-group">
+					<h:outputLabel for="nome" value="Prova" styleClass="col-sm-2" />
+					<div class="col-sm-7">
+						<h:inputText id="nome" value="#{provaMB.prova.nome}" styleClass="form-control" />
+					</div>
+					<div class="col-sm-3">
+						<h:message for="nome" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="nota" value="Nota" styleClass="col-sm-2" />
+					<div class="col-sm-7">
+						<h:inputText id="nota" styleClass="form-control" value="#{provaMB.prova.nota}" />						
+					</div>
+				</div>
+				<div class="btn-group" role="group">
+					<h:commandButton value="Salvar" action="#{provaMB.addProva}"
+						styleClass="btn btn-primary" />
+					<h:commandButton value="Limpar" action="#{provaMB.clear}"
+						styleClass="btn btn-info" />
+				</div>
+			</h:form>
+		</ui:define>
+</ui:composition>
+</h:body>
+</html>
